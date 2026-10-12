@@ -21,8 +21,8 @@
   --on-night: #FFFFFF;
   --alert: #B93A0B;
   --font-display: 'Bungee', Impact, 'Arial Black', sans-serif;
-  --font-body: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-card: 'Barlow Condensed', 'Arial Narrow', 'Roboto Condensed', sans-serif;
+  --font-body: 'Bricolage Grotesque', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-card: 'Big Shoulders Display', 'Arial Narrow', 'Roboto Condensed', sans-serif;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
