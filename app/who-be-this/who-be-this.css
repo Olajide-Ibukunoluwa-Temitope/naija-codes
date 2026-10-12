@@ -129,6 +129,17 @@
 .wbt-fh-big { margin: 0; font: 400 clamp(2.5rem, 12vmin, 6rem)/1 var(--font-display); }
 .wbt-fh-btn { padding-inline: 2em; background: var(--deck-fg); color: var(--deck-bg); }
 
+/* Landscape phones are short, so give the name the space. The name refits on rotate. */
+@media (orientation: landscape) and (max-height: 500px) {
+  .wbt-fh .wbt-note { display: none; }
+  .wbt-fh .wbt-act { min-height: 44px; font-size: 1.05rem; }
+  .wbt-fh .wbt-chip { font-size: 1rem; }
+  .wbt-fh .wbt-quit { min-height: 34px; }
+  .wbt-fh-mid { gap: 8px; }
+  .wbt-fh-big { font-size: clamp(2rem, 14vh, 4rem); }
+  .wbt-fh .wbt-count-tip { font-size: 1rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .wbt-progress i { animation-duration: var(--dur); }
 }
