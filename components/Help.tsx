@@ -50,6 +50,10 @@ export default function Help() {
           </ul>
           <p>The team that goes first has 9 cards. The other team has 8. There are 7 neutral cards and 1 assassin.</p>
           <p>Tapped the wrong card? Press Undo.</p>
+          <p>
+            Want a different game? Try <a href="/who-be-this">Who Be This</a>, where you hold the phone to your forehead
+            and your friends give the clues.
+          </p>
         </div>
       </div>
     </details>

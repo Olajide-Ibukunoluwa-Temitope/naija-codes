@@ -39,7 +39,7 @@ export function randomCode(pack: PackKey): string {
   return s;
 }
 
-function seedFrom(str: string): number {
+export function seedFrom(str: string): number {
   let h = 1779033703 ^ str.length;
   for (let i = 0; i < str.length; i++) {
     h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
@@ -50,7 +50,7 @@ function seedFrom(str: string): number {
   return (h ^= h >>> 16) >>> 0;
 }
 
-function mulberry32(seed: number): () => number {
+export function mulberry32(seed: number): () => number {
   let a = seed;
   return function () {
     a |= 0;

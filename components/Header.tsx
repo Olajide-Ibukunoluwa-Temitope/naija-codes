@@ -40,6 +40,7 @@ export default function Header({ code, pack, confirming, canChange, onLoad, onNe
         <div className="brand">
           <h1>Naija Codes</h1>
           <p>A word game for two teams. Built for games night.</p>
+          <p className="switch"><a className="btn"href="/who-be-this">Switch to Who Be This</a></p>
         </div>
         <form className="codeform" onSubmit={submit}>
           <label htmlFor="game-code">Game code</label>

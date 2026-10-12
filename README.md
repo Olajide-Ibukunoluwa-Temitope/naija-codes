@@ -48,3 +48,12 @@ Everyone must use the same deployed version, or the boards will not match.
 - `lib/words.ts`: the word packs
 - `components/Game.tsx`: the main screen and game actions
 - `app/globals.css`: all styling
+
+## Who Be This
+
+A second game at `/who-be-this`. One player holds the phone to their forehead, the others give clues, and the player scores by guessing the word.
+
+- Tilt down for Got it, tilt up for Pass. Tilt needs HTTPS (Vercel gives you this) and a real phone. iPhones show a permission prompt the first time.
+- No tilt sensor, or on a laptop or TV? Use the buttons or the arrow keys (Right = Got it, Left = Pass).
+- Edit or add decks in `lib/whobethis/decks.ts`.
+- Scores and used cards are saved in the browser on that device.

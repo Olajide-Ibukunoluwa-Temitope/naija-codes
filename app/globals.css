@@ -1,5 +1,5 @@
 /*
-  Layout: a full width danfo header (yellow body, black stripe), a two team scoreboard,
+  Layout: a full width danfo header (solid yellow), a two team scoreboard,
   a 5x5 board that fills the width, then controls. Spymasters use the same page on their phones.
   Color: danfo yellow, Naija green, sand for neutral, black for the assassin.
   Type: Bungee for the title and big numbers, Barlow Condensed for the cards, Barlow for the rest.
@@ -76,10 +76,7 @@ button { touch-action: manipulation; font-family: inherit; }
 
 /* Header */
 .bar {
-  background: linear-gradient(to bottom,
-    var(--danfo) 0, var(--danfo) calc(100% - 20px),
-    var(--on-danfo) calc(100% - 20px), var(--on-danfo) calc(100% - 10px),
-    var(--danfo) calc(100% - 10px));
+  background: var(--danfo);
   padding-bottom: 20px;
   color: var(--on-danfo);
 }
@@ -91,6 +88,7 @@ button { touch-action: manipulation; font-family: inherit; }
 .brand { min-width: 0; }
 .brand h1 { margin: 0; font: 400 clamp(1.5rem, 6vw, 2.3rem)/1 var(--font-display); letter-spacing: .01em; }
 .brand p { margin: 8px 0 0; font-weight: 600; font-size: .95rem; max-width: 34ch; }
+.brand p.switch { margin-top: 16px; }
 .codeform { min-width: 0; max-width: 100%; }
 .codeform label, .packline .lbl { font: 700 .75rem/1 var(--font-body); letter-spacing: .12em; text-transform: uppercase; }
 .codeform label { display: block; margin-bottom: 6px; }

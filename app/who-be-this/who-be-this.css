@@ -1,0 +1,134 @@
+/*
+  Who Be This. Reuses the danfo header and tokens from globals.css.
+  Each deck has its own color. While playing, the whole screen takes the deck color.
+  Got it flashes white, Pass flashes black, so the two read the same on every deck.
+*/
+
+.wbt-nav a { display: inline-flex; align-items: center; text-decoration: none; }
+
+.wbt-section { margin-top: 24px; }
+.wbt-h {
+  margin: 0 0 10px; font: 700 1.1rem/1 var(--font-card); letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+}
+.wbt-lbl { font: 700 .75rem/1 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+/* Decks */
+.wbt-decks { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 10px; }
+.wbt-deck {
+  display: flex; flex-direction: column; justify-content: space-between; gap: 8px; min-height: 124px; min-width: 0;
+  padding: 12px 14px; text-align: left; cursor: pointer;
+  background: var(--deck-bg); color: var(--deck-fg); border: 3px solid var(--deck-bg); border-radius: 12px;
+}
+.wbt-deck .top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.wbt-deck .n { font: 700 1.5rem/1 var(--font-card); letter-spacing: .03em; text-transform: uppercase; }
+.wbt-deck .sel {
+  flex: none; padding: 3px 7px; border-radius: 6px; background: var(--deck-fg); color: var(--deck-bg);
+  font: 700 .72rem/1 var(--font-body); letter-spacing: .08em; text-transform: uppercase;
+}
+.wbt-deck .c { font-size: .85rem; line-height: 1.25; }
+.wbt-deck[aria-pressed="true"] { outline: 4px solid var(--ink); outline-offset: 3px; }
+
+/* Settings and start */
+.wbt-settings { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: flex-end; }
+.wbt-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.wbt-field.grow { flex: 1 1 14rem; }
+.wbt-tiltnote { flex-basis: 100%; margin: 0; font-size: .9rem; color: var(--muted); max-width: 62ch; }
+.wbt-start { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+.wbt-input {
+  min-height: 48px; width: 100%; padding: .4em .7em; font: 600 1.1rem var(--font-body);
+  background: var(--surface); color: var(--ink); border: 2px solid var(--ink); border-radius: 8px;
+}
+.wbt-go { min-height: 56px; padding-inline: 2em; font-size: 1.15rem; }
+.wbt-how ol { margin: 0; padding-left: 1.2em; }
+.wbt-how li { margin: 8px 0; max-width: 62ch; }
+
+/* Scores */
+.wbt-board { margin: 0 0 12px; padding: 0; list-style: none; counter-reset: rank; display: grid; gap: 6px; max-width: 520px; }
+.wbt-board li {
+  counter-increment: rank; display: grid; grid-template-columns: 2.2em 1fr auto auto; align-items: baseline; gap: 10px;
+  padding: 8px 12px; background: var(--surface); border: 2px solid var(--line); border-radius: 10px; min-width: 0;
+}
+.wbt-board li::before { content: counter(rank); font: 700 1.1rem/1 var(--font-card); color: var(--muted); }
+.wbt-board .who { font-weight: 700; overflow-wrap: anywhere; }
+.wbt-board .deck { font-size: .85rem; color: var(--muted); }
+.wbt-board b { font: 400 1.4rem/1 var(--font-display); font-variant-numeric: tabular-nums; }
+
+/* Results */
+.wbt-result {
+  padding: 18px 20px; border-radius: 14px; background: var(--deck-bg); color: var(--deck-fg);
+  display: grid; gap: 4px; justify-items: start;
+}
+.wbt-result .who { margin: 0; font: 700 1.4rem/1 var(--font-card); letter-spacing: .06em; text-transform: uppercase; overflow-wrap: anywhere; }
+.wbt-result .big { font: 400 clamp(4rem, 22vw, 8rem)/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.wbt-result .sub { margin: 0; font-weight: 600; }
+.wbt-lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 8px 28px; margin-top: 20px; }
+.wbt-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.wbt-list li { padding: 6px 10px; border-radius: 8px; font-weight: 600; overflow-wrap: anywhere; }
+.wbt-list.ok li { background: var(--green); color: var(--on-green); }
+.wbt-list.pass li { background: var(--surface); border: 2px solid var(--line); color: var(--muted); text-decoration: line-through; text-decoration-thickness: 1px; }
+.wbt-empty { margin: 0; color: var(--muted); }
+.wbt-resultbtns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+
+/* Countdown and playing take the whole screen */
+.wbt-count, .wbt-play {
+  position: fixed; inset: 0; z-index: 10; height: 100dvh;
+  background: var(--deck-bg); color: var(--deck-fg);
+  padding: max(12px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+}
+.wbt-count { display: grid; place-content: center; justify-items: center; gap: 8px; text-align: center; }
+.wbt-count-num { font: 400 clamp(6rem, 38vmin, 20rem)/1 var(--font-display); }
+.wbt-count-tip { margin: 0; font: 600 clamp(1rem, 3.4vmin, 1.5rem)/1.3 var(--font-body); max-width: 34ch; }
+.wbt-turn { display: none; }
+@media (orientation: portrait) and (max-width: 700px) { .wbt-turn { display: block; } }
+
+.wbt-play { display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
+.wbt-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.wbt-chip {
+  padding: .2em .6em; border-radius: 10px; background: var(--deck-fg); color: var(--deck-bg);
+  font: 700 clamp(1.1rem, 4.4vmin, 1.8rem)/1.1 var(--font-card); letter-spacing: .04em; text-transform: uppercase;
+}
+.wbt-time { font: 400 clamp(1.6rem, 7vmin, 3rem)/1.1 var(--font-display); font-variant-numeric: tabular-nums; letter-spacing: 0; text-transform: none; min-width: 2.2em; text-align: center; }
+.wbt-time.low { background: #C2410C; color: #FFFFFF; }
+.wbt-quit {
+  min-height: 40px; padding: 0 .9em; border-radius: 10px; cursor: pointer;
+  background: transparent; color: inherit; border: 2px solid currentColor; font: 600 .95rem var(--font-body);
+}
+
+.wbt-progress { position: relative; height: 8px; border-radius: 99px; overflow: hidden; color: var(--deck-fg); flex: none; }
+.wbt-progress::before { content: ''; position: absolute; inset: 0; background: currentColor; opacity: .25; }
+.wbt-progress i { position: absolute; inset: 0; background: currentColor; transform-origin: left; animation: wbt-drain var(--dur) linear forwards; }
+@keyframes wbt-drain { to { transform: scaleX(0); } }
+
+.wbt-word { flex: 1; min-height: 0; padding: 4px 0; }
+.wbt-fit { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.wbt-fit span {
+  display: block; width: 100%; text-align: center;
+  font: 700 40px/.98 var(--font-card); letter-spacing: .01em; text-transform: uppercase; text-wrap: balance;
+}
+.wbt-note { margin: 0; text-align: center; font-weight: 600; font-size: .95rem; }
+
+.wbt-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; flex: none; }
+.wbt-act {
+  min-height: 56px; border-radius: 14px; cursor: pointer;
+  background: transparent; color: inherit; border: 3px solid currentColor;
+  font: 700 1.3rem/1 var(--font-card); letter-spacing: .06em; text-transform: uppercase;
+}
+.wbt-act.ok { background: var(--deck-fg); color: var(--deck-bg); }
+.wbt-act:disabled { opacity: .6; cursor: default; }
+
+.wbt-flash { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 8px; text-align: center; padding: 16px; }
+.wbt-flash.ok { background: #FFFFFF; color: #0B7A45; }
+.wbt-flash.pass { background: #151208; color: #FFB020; }
+.wbt-flash b { font: 400 clamp(3rem, 16vmin, 9rem)/1 var(--font-display); text-transform: uppercase; }
+.wbt-flash span { font: 700 clamp(1.1rem, 4vmin, 2rem)/1.1 var(--font-card); letter-spacing: .08em; text-transform: uppercase; overflow-wrap: anywhere; }
+
+/* Who Am I (everyone plays at once) */
+.wbt-fh-form { display: grid; gap: 18px; max-width: 520px; }
+.wbt-fh-form .seg { flex-wrap: wrap; }
+.wbt-fh-mid { flex: 1; display: grid; place-content: center; justify-items: center; gap: 14px; text-align: center; }
+.wbt-fh-big { margin: 0; font: 400 clamp(2.5rem, 12vmin, 6rem)/1 var(--font-display); }
+.wbt-fh-btn { padding-inline: 2em; background: var(--deck-fg); color: var(--deck-bg); }
+
+@media (prefers-reduced-motion: reduce) {
+  .wbt-progress i { animation-duration: var(--dur); }
+}
